@@ -6,20 +6,21 @@ interface IPickaxeProvideProps{
 }
 
 export default function PickaxeProvider({children} : IPickaxeProvideProps){
-    const [currentPickaxe, setCurrentPickaxe] = useState<number>(0)
-
-    function addPickaxe(value : number){
-        setCurrentPickaxe(currentPickaxe * 2)
+    const [currentPickaxe, setCurrentPickaxe] = useState<number>(1)
+    const [currentDemage, setCurrentDemage] = useState<number>(1)
+    function addPickaxeLVL(value : number){
+        setCurrentPickaxe(currentPickaxe + 1)
     }
-    // function PrisePickaxe(value : number){
-    //     setCurrentPickaxe(currentPickaxe * 2)
-    // }
-    // пока не понимаю
+
+    function demagePickaxe(value : number){
+        setCurrentDemage(currentDemage * 2)
+    }
 
     const contextValue : IPickaxeContext = {
+        damage : currentDemage,
         pickaxe : currentPickaxe,
-        addPickaxe : addPickaxe,
-        PrisePickaxe : PrisePickaxe
+        addPickaxeLVL : addPickaxeLVL,
+        demagePickaxe : demagePickaxe
     }
 
     return (
